@@ -75,7 +75,7 @@
   <header class="sticky top-0 z-50 border-b border-slate-100 bg-white/95 backdrop-blur-md">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
-        <!-- Logo & Company Name -->
+        <!-- Logo & Company Name (Enlarged & Prominent) -->
         <a href="#home" class="flex items-center space-x-3 sm:space-x-4 shrink-0">
           <img src="assets/ade-logo.png" alt="Sri Adhira Engineers ADE Logo" class="h-12 sm:h-16 md:h-20 w-auto object-contain">
           <div class="leading-tight">
@@ -202,66 +202,91 @@
       </div>
     </section>
 
-    <!-- Client Testimonials -->
+    <!-- Client Testimonials & Scrollable Reviews -->
     <section id="testimonials" class="bg-mist py-20 sm:py-28">
       <div class="mx-auto max-w-7xl px-5">
         <div class="mx-auto max-w-2xl text-center">
           <p class="section-kicker">Client Feedback</p>
           <h2 class="mt-4 font-display text-3xl font-extrabold text-navy sm:text-4xl">What Our Clients Say</h2>
-          <p class="mt-4 leading-7 text-slate-600">Read how we helped client visions become reality across homes, commercial spaces, and interiors.</p>
+          <p class="mt-4 leading-7 text-slate-600">Read verified reviews from our clients or share your experience with Sri Adhira Engineers.</p>
         </div>
 
-        <div class="mt-12 grid gap-8 md:grid-cols-3">
-          <!-- Testimonial 1 -->
-          <div class="flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+        <!-- Scrollable Testimonials Container (Holds 10+ reviews) -->
+        <div id="testimonialsContainer" class="mt-12 flex gap-6 overflow-x-auto pb-6 snap-x scroll-smooth">
+          <!-- Fallback initial reviews (Dynamic loading replaces this if Supabase entries exist) -->
+          <div class="snap-start shrink-0 w-[300px] sm:w-[360px] flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
             <div>
-              <div class="flex items-center gap-1 text-amber-400">
-                ★★★★★
-              </div>
-              <p class="mt-4 text-sm leading-7 text-slate-600 italic">"Sri Adhira Engineers completed our residential villa on schedule. Their structural work and interior finishing were precise and of high quality."</p>
+              <div class="text-amber-400 text-sm">★★★★★</div>
+              <p class="mt-3 text-sm leading-6 text-slate-600 italic">"Sri Adhira Engineers completed our residential villa on schedule. Their structural work and interior finishing were precise and of high quality."</p>
             </div>
-            <div class="mt-6 border-t border-slate-100 pt-4 flex items-center justify-between">
+            <div class="mt-6 border-t border-slate-100 pt-3 flex items-center justify-between">
               <div>
-                <p class="font-display text-base font-bold text-navy">K. Rajesh</p>
-                <p class="text-xs font-semibold text-slate-500">Residential Villa Owner</p>
+                <p class="font-display text-sm font-bold text-navy">K. Rajesh</p>
+                <p class="text-xs font-semibold text-slate-500">Residential Villa Owner, Chennai</p>
               </div>
-              <span class="text-xs font-bold text-blue bg-blue/10 px-3 py-1 rounded-full">Chennai</span>
             </div>
           </div>
 
-          <!-- Testimonial 2 -->
-          <div class="flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+          <div class="snap-start shrink-0 w-[300px] sm:w-[360px] flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
             <div>
-              <div class="flex items-center gap-1 text-amber-400">
-                ★★★★★
-              </div>
-              <p class="mt-4 text-sm leading-7 text-slate-600 italic">"Very professional approach toward steel structure design and planning. Communication was smooth and transparent from day one."</p>
+              <div class="text-amber-400 text-sm">★★★★★</div>
+              <p class="mt-3 text-sm leading-6 text-slate-600 italic">"Very professional approach toward steel structure design and planning. Communication was smooth and transparent from day one."</p>
             </div>
-            <div class="mt-6 border-t border-slate-100 pt-4 flex items-center justify-between">
+            <div class="mt-6 border-t border-slate-100 pt-3 flex items-center justify-between">
               <div>
-                <p class="font-display text-base font-bold text-navy">M. Sundaram</p>
-                <p class="text-xs font-semibold text-slate-500">Commercial Warehouse Project</p>
+                <p class="font-display text-sm font-bold text-navy">M. Sundaram</p>
+                <p class="text-xs font-semibold text-slate-500">Commercial Warehouse, Thiruninravur</p>
               </div>
-              <span class="text-xs font-bold text-blue bg-blue/10 px-3 py-1 rounded-full">Thiruninravur</span>
             </div>
           </div>
 
-          <!-- Testimonial 3 -->
-          <div class="flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+          <div class="snap-start shrink-0 w-[300px] sm:w-[360px] flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
             <div>
-              <div class="flex items-center gap-1 text-amber-400">
-                ★★★★★
-              </div>
-              <p class="mt-4 text-sm leading-7 text-slate-600 italic">"Our office interior renovation turned out excellent. Sri Adhira Engineers gave great layout suggestions that maximized our floor space."</p>
+              <div class="text-amber-400 text-sm">★★★★★</div>
+              <p class="mt-3 text-sm leading-6 text-slate-600 italic">"Our office interior renovation turned out excellent. Sri Adhira Engineers gave great layout suggestions that maximized our floor space."</p>
             </div>
-            <div class="mt-6 border-t border-slate-100 pt-4 flex items-center justify-between">
+            <div class="mt-6 border-t border-slate-100 pt-3 flex items-center justify-between">
               <div>
-                <p class="font-display text-base font-bold text-navy">S. Priya</p>
-                <p class="text-xs font-semibold text-slate-500">Interior Works Client</p>
+                <p class="font-display text-sm font-bold text-navy">S. Priya</p>
+                <p class="text-xs font-semibold text-slate-500">Interior Works Client, Ambattur</p>
               </div>
-              <span class="text-xs font-bold text-blue bg-blue/10 px-3 py-1 rounded-full">Ambattur</span>
             </div>
           </div>
+        </div>
+
+        <!-- Client Feedback Free-Text Form -->
+        <div class="mt-12 mx-auto max-w-3xl rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          <h3 class="font-display text-xl font-extrabold text-navy">Leave Your Feedback</h3>
+          <p class="mt-1 text-sm text-slate-500">Have you worked with us? Share your comment below (reviewed prior to publishing).</p>
+          
+          <form id="feedbackForm" class="mt-6 space-y-4">
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label for="feedbackName" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Your Name *</label>
+                <input type="text" id="feedbackName" required class="field" placeholder="e.g. K. Rajesh">
+              </div>
+              <div>
+                <label for="feedbackRole" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Project / Location</label>
+                <input type="text" id="feedbackRole" class="field" placeholder="e.g. Residential Owner, Chennai">
+              </div>
+            </div>
+            <div>
+              <label for="feedbackRating" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Rating</label>
+              <select id="feedbackRating" class="field">
+                <option value="5">★★★★★ (5/5)</option>
+                <option value="4">★★★★☆ (4/5)</option>
+                <option value="3">★★★☆☆ (3/5)</option>
+              </select>
+            </div>
+            <div>
+              <label for="feedbackComment" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Your Feedback / Comment *</label>
+              <textarea id="feedbackComment" required minlength="10" rows="3" class="field" placeholder="Share your experience working with Sri Adhira Engineers..."></textarea>
+            </div>
+            <button type="submit" id="feedbackSubmitBtn" class="btn-primary rounded-full px-6 py-3 font-bold text-sm">
+              Submit Feedback
+            </button>
+            <p id="feedbackStatus" class="hidden text-sm font-semibold mt-2"></p>
+          </form>
         </div>
       </div>
     </section>
@@ -456,10 +481,74 @@
 
     if (hasSupabaseConfig && window.supabase) {
       const publicClient = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+      
+      // Load public project gallery items
       publicClient.from('projects').select('id,title,service,status,location,description,media_url,media_type,created_at').eq('is_published', true).order('created_at', { ascending: false }).then(({data,error}) => {
         if (error) { console.error('Unable to load project gallery:', error.message); return; }
         projectItems = data || []; renderProjects();
       });
+
+      // Load approved testimonials
+      async function loadTestimonials() {
+        const container = document.getElementById('testimonialsContainer');
+        if (!container) return;
+
+        const { data, error } = await publicClient
+          .from('testimonials')
+          .select('*')
+          .eq('is_approved', true)
+          .order('created_at', { ascending: false });
+
+        if (error || !data || data.length === 0) return; // Keeps fallback static reviews
+
+        container.innerHTML = data.map(item => `
+          <div class="snap-start shrink-0 w-[300px] sm:w-[360px] flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
+            <div>
+              <div class="text-amber-400 text-sm">${'★'.repeat(item.rating || 5)}</div>
+              <p class="mt-3 text-sm leading-6 text-slate-600 italic">"${item.comment}"</p>
+            </div>
+            <div class="mt-6 border-t border-slate-100 pt-3 flex items-center justify-between">
+              <div>
+                <p class="font-display text-sm font-bold text-navy">${item.client_name}</p>
+                <p class="text-xs font-semibold text-slate-500">${item.role_location || 'Verified Client'}</p>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Handle client feedback form submissions
+      const feedbackForm = document.getElementById('feedbackForm');
+      if (feedbackForm) {
+        feedbackForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const submitBtn = document.getElementById('feedbackSubmitBtn');
+          const status = document.getElementById('feedbackStatus');
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Submitting...';
+
+          const { error } = await publicClient.from('testimonials').insert([{
+            client_name: document.getElementById('feedbackName').value,
+            role_location: document.getElementById('feedbackRole').value,
+            rating: parseInt(document.getElementById('feedbackRating').value),
+            comment: document.getElementById('feedbackComment').value,
+            is_approved: false
+          }]);
+
+          if (error) {
+            status.className = 'text-red-600 text-sm font-semibold mt-2 block';
+            status.textContent = 'Error submitting feedback. Please try again.';
+          } else {
+            status.className = 'text-emerald-600 text-sm font-semibold mt-2 block';
+            status.textContent = 'Thank you! Your feedback has been submitted for owner approval.';
+            feedbackForm.reset();
+          }
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Feedback';
+        });
+      }
+
+      loadTestimonials();
     }
   </script>
 </body>
