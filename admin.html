@@ -1,28 +1,320 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#092d67"><title>Project Manager | Sri Adhira Engineers</title><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config={theme:{extend:{colors:{navy:'#092d67',blue:'#2563b9',aqua:'#10c5d4',mist:'#f4f8fc'},fontFamily:{display:['Manrope','sans-serif'],sans:['DM Sans','sans-serif']}}}};</script><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet"><style>body{font-family:'DM Sans',sans-serif}h1,h2,h3{font-family:'Manrope',sans-serif}.field{width:100%;border:1px solid #d8e2ef;border-radius:12px;padding:12px 14px;background:#fff;outline:none}.field:focus{border-color:#2563b9;box-shadow:0 0 0 3px #2563b91c}</style></head>
-<body class="min-h-screen bg-mist text-slate-800"><header class="bg-[#061b3e] text-white"><div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-5"><a href="index.html" class="flex items-center gap-3"><img src="assets/ade-logo.png" class="h-10 rounded bg-white p-1" alt="ADE logo"><span><strong class="block">Sri Adhira Engineers</strong><span class="text-xs text-white/60">Project manager</span></span></a><a href="index.html" class="text-sm font-bold text-aqua hover:text-white">← View website</a></div></header>
-<main class="mx-auto max-w-6xl px-5 py-10"><div class="mb-8 max-w-3xl"><p class="text-xs font-extrabold uppercase tracking-[.16em] text-blue">Owner dashboard</p><h1 class="mt-3 text-3xl font-extrabold text-navy sm:text-4xl">Manage your project gallery</h1><p class="mt-3 leading-7 text-slate-600">Sign in with the owner account, upload project photos or videos, then publish them to the public website. Keep client names, house numbers, faces, and private site details out of anything you post publicly unless you have permission.</p></div>
-<div id="configWarning" class="mb-6 hidden rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900">Supabase configuration is missing. Follow the README to create your Supabase project and fill in <code>assets/config.js</code>.</div>
-<div id="notice" class="mb-6 hidden rounded-xl p-4 text-sm" role="status" aria-live="polite"></div>
-<section id="loginPanel" class="max-w-xl rounded-2xl border border-slate-100 bg-white p-6 shadow-sm sm:p-8"><h2 class="text-xl font-extrabold text-navy">Owner sign in</h2><p class="mt-2 text-sm leading-6 text-slate-500">Use the account you created in Supabase Authentication. Public visitors cannot upload to this dashboard.</p><form id="loginForm" class="mt-6 space-y-4"><div><label for="loginEmail" class="mb-2 block text-sm font-bold">Owner email</label><input class="field" id="loginEmail" type="email" value="sriadhiraengineers@gmail.com" autocomplete="username" required></div><div><label for="loginPassword" class="mb-2 block text-sm font-bold">Password</label><input class="field" id="loginPassword" type="password" autocomplete="current-password" required></div><button class="w-full rounded-full bg-blue px-5 py-3 font-bold text-white hover:bg-navy" type="submit">Sign in</button></form></section>
-<section id="managerPanel" class="hidden space-y-8"><div class="flex flex-col justify-between gap-4 rounded-2xl bg-white p-5 shadow-sm sm:flex-row sm:items-center"><div><p class="text-sm text-slate-500">Signed in as</p><p id="ownerLabel" class="font-bold text-navy"></p></div><button id="signOutBtn" class="rounded-full border border-slate-200 px-5 py-2 text-sm font-bold hover:bg-slate-50">Sign out</button></div>
-<div class="grid gap-8 lg:grid-cols-[.9fr_1.1fr]"><section class="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm"><h2 class="text-xl font-extrabold text-navy">Add a project update</h2><p class="mt-2 text-sm leading-6 text-slate-500">Each upload creates one gallery card. Use a clear title and a short, truthful description.</p><form id="uploadForm" class="mt-6 space-y-4"><div><label for="title" class="mb-2 block text-sm font-bold">Project title *</label><input id="title" class="field" required maxlength="100" placeholder="Example: Two-storey residence"></div><div><label for="service" class="mb-2 block text-sm font-bold">Service type *</label><select id="service" class="field" required><option value="">Choose a service</option><option>Residential Constructions</option><option>Commercial Buildings</option><option>Interior Works</option><option>Steel Structures Design and Constructions</option></select></div><div class="grid gap-4 sm:grid-cols-2"><div><label for="status" class="mb-2 block text-sm font-bold">Project status *</label><select id="status" class="field"><option>Ongoing</option><option>Completed</option></select></div><div><label for="location" class="mb-2 block text-sm font-bold">Location (optional)</label><input id="location" class="field" maxlength="100" placeholder="e.g. Chennai"></div></div><div><label for="description" class="mb-2 block text-sm font-bold">Short description (optional)</label><textarea id="description" class="field min-h-24" maxlength="500" placeholder="What stage is this project at? What work was delivered?"></textarea></div><div><label for="mediaFile" class="mb-2 block text-sm font-bold">Photo or video *</label><input id="mediaFile" class="field" type="file" accept="image/jpeg,image/png,image/webp,image/avif,video/mp4,video/webm" required><p class="mt-2 text-xs leading-5 text-slate-500">Formats: JPG, PNG, WebP, AVIF, MP4, WebM. Keep videos short and compress large files; configure storage limits in Supabase.</p></div><label class="flex items-start gap-3 text-sm leading-6 text-slate-600"><input id="publish" type="checkbox" checked class="mt-1 accent-blue"><span>Publish this item on the public website immediately. Uncheck to save it as a draft.</span></label><button id="uploadBtn" class="w-full rounded-full bg-navy px-5 py-3 font-bold text-white hover:bg-blue" type="submit">Upload project media</button></form></section>
-<section class="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm"><div class="flex items-center justify-between gap-3"><div><h2 class="text-xl font-extrabold text-navy">Your uploads</h2><p class="mt-2 text-sm text-slate-500">Publish, unpublish, or delete gallery items.</p></div><button id="refreshBtn" class="rounded-full border border-slate-200 px-4 py-2 text-sm font-bold">Refresh</button></div><div id="projectList" class="mt-5 space-y-3"><p class="text-sm text-slate-500">Sign in to view your uploads.</p></div></section></div></section>
-</main>
-<footer class="mt-10 border-t border-slate-200 bg-white"><div class="mx-auto max-w-6xl px-5 py-5 text-xs text-slate-500">Sri Adhira Engineers · Private owner tools. Do not share this dashboard with the public.</div></footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="assets/config.js"></script><script>
-(() => {
- const $=id=>document.getElementById(id); const url=window.SUPABASE_URL; const key=window.SUPABASE_ANON_KEY; const goodConfig=url&&key&&!url.includes('YOUR_PROJECT')&&!key.includes('YOUR_SUPABASE');
- const login=$('loginPanel'), manager=$('managerPanel'), warning=$('configWarning'), notice=$('notice'); let client=null; let activeUser=null;
- if(!goodConfig||!window.supabase){warning.classList.remove('hidden');$('loginForm').querySelector('button').disabled=true;}
- else client=window.supabase.createClient(url,key);
- function message(text,type='info'){notice.className='mb-6 rounded-xl p-4 text-sm '+(type==='error'?'border border-red-200 bg-red-50 text-red-800':type==='success'?'border border-emerald-200 bg-emerald-50 text-emerald-900':'border border-blue-200 bg-blue-50 text-blue-900');notice.textContent=text;notice.classList.remove('hidden');}
- function switchUi(user){activeUser=user;login.classList.toggle('hidden',!!user);manager.classList.toggle('hidden',!user);if(user){$('ownerLabel').textContent=user.email||'Owner account';loadProjects();}}
- async function requireOwner(){const {data:{session}}=await client.auth.getSession();if(session&&session.user.email==='sriadhiraengineers@gmail.com')switchUi(session.user);else if(session){await client.auth.signOut();switchUi(null);message('This dashboard is restricted to sriadhiraengineers@gmail.com.','error');}else switchUi(null);}
- $('loginForm').addEventListener('submit',async e=>{e.preventDefault();if(!client)return;const btn=e.currentTarget.querySelector('button');btn.disabled=true;btn.textContent='Signing in…';const {data,error}=await client.auth.signInWithPassword({email:$('loginEmail').value.trim(),password:$('loginPassword').value});btn.disabled=false;btn.textContent='Sign in';if(error){message('Sign-in failed. Check the email/password and confirm the owner account exists in Supabase Auth. '+error.message,'error');return;}if(data.user.email!=='sriadhiraengineers@gmail.com'){await client.auth.signOut();message('Only the Sri Adhira Engineers owner email is permitted.','error');return;}message('Signed in.','success');switchUi(data.user);});
- $('signOutBtn').addEventListener('click',async()=>{await client.auth.signOut();switchUi(null);message('You have signed out.');}); $('refreshBtn').addEventListener('click',loadProjects);
- async function loadProjects(){if(!client||!activeUser)return;const list=$('projectList');list.replaceChildren();const {data,error}=await client.from('projects').select('*').order('created_at',{ascending:false});if(error){message('Could not load projects: '+error.message,'error');return;}if(!data||!data.length){const p=document.createElement('p');p.className='text-sm text-slate-500';p.textContent='No gallery uploads yet. Add your first project using the form.';list.append(p);return;}data.forEach(item=>{const row=document.createElement('div');row.className='flex gap-3 rounded-xl border border-slate-100 p-3';const media=item.media_type==='video'?document.createElement('video'):document.createElement('img');media.src=item.media_url;media.className='h-20 w-24 shrink-0 rounded-lg bg-slate-100 object-cover';if(item.media_type==='video'){media.controls=true;media.muted=true;media.preload='metadata';}else media.alt=item.title;const main=document.createElement('div');main.className='min-w-0 flex-1';const title=document.createElement('p');title.className='break-words text-sm font-extrabold text-navy';title.textContent=item.title;const detail=document.createElement('p');detail.className='mt-1 text-xs text-slate-500';detail.textContent=item.service+' · '+item.status;const pub=document.createElement('label');pub.className='mt-2 flex items-center gap-2 text-xs font-semibold';const check=document.createElement('input');check.type='checkbox';check.checked=!!item.is_published;check.className='accent-blue';check.addEventListener('change',async()=>{check.disabled=true;const {error}=await client.from('projects').update({is_published:check.checked}).eq('id',item.id);check.disabled=false;if(error){check.checked=!check.checked;message('Could not update publish status: '+error.message,'error');}else{message(check.checked?'Project published on the website.':'Project hidden from public gallery.','success');}});pub.append(check,document.createTextNode(item.is_published?'Published on website':'Draft / hidden'));const del=document.createElement('button');del.className='mt-2 text-xs font-bold text-red-600 hover:underline';del.textContent='Delete';del.addEventListener('click',async()=>{if(!confirm('Delete this gallery item and its uploaded media? This cannot be undone.'))return;del.disabled=true;const {error:dbError}=await client.from('projects').delete().eq('id',item.id);if(dbError){message('Could not delete project: '+dbError.message,'error');del.disabled=false;return;}if(item.media_path){const {error:storageError}=await client.storage.from('project-media').remove([item.media_path]);if(storageError)message('The gallery item was deleted, but storage cleanup failed: '+storageError.message,'error');else message('Project deleted.','success');}loadProjects();});main.append(title,detail,pub,del);row.append(media,main);list.append(row);});}
- $('uploadForm').addEventListener('submit',async e=>{e.preventDefault();if(!client||!activeUser)return;const file=$('mediaFile').files[0];if(!file){message('Please choose a photo or video.','error');return;}const maxSize=40*1024*1024;if(file.size>maxSize){message('Please compress the file below 40 MB before uploading.','error');return;}const allowed=['image/jpeg','image/png','image/webp','image/avif','video/mp4','video/webm'];if(!allowed.includes(file.type)){message('Please use JPG, PNG, WebP, AVIF, MP4, or WebM.','error');return;}const button=$('uploadBtn');button.disabled=true;button.textContent='Uploading…';try{const safeName=file.name.toLowerCase().replace(/[^a-z0-9._-]+/g,'-').replace(/^-+|-+$/g,'').slice(-90)||'media';const path=Date.now()+'-'+crypto.randomUUID()+'-'+safeName;const {error:uploadError}=await client.storage.from('project-media').upload(path,file,{cacheControl:'3600',upsert:false,contentType:file.type});if(uploadError)throw uploadError;const {data:publicData}=client.storage.from('project-media').getPublicUrl(path);const mediaType=file.type.startsWith('video/')?'video':'image';const {error:insertError}=await client.from('projects').insert({title:$('title').value.trim(),service:$('service').value,status:$('status').value,location:$('location').value.trim()||null,description:$('description').value.trim()||null,media_url:publicData.publicUrl,media_path:path,media_type:mediaType,is_published:$('publish').checked});if(insertError){await client.storage.from('project-media').remove([path]);throw insertError;}message($('publish').checked?'Upload successful — the project is now on your website.':'Upload saved as a draft. Publish it from your upload list when ready.','success');$('uploadForm').reset();$('publish').checked=true;loadProjects();}catch(err){message('Upload failed: '+(err.message||'Unexpected error')+'. Check your Supabase setup, storage policies, file type, and file size.','error');}finally{button.disabled=false;button.textContent='Upload project media';}});
- if(client)requireOwner();
-})();
-</script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Owner Dashboard | Sri Adhira Engineers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { navy: '#092d67', blue: '#2563b9', aqua: '#10c5d4', mist: '#f4f8fc' },
+      fontFamily: { sans: ['DM Sans','sans-serif'], display: ['Manrope','sans-serif'] }
+    }}};
+  </script>
+</head>
+<body class="bg-slate-50 min-h-screen text-slate-800">
+  <!-- Top Bar -->
+  <header class="bg-navy text-white py-4 px-6 shadow-md">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <img src="assets/ade-logo.png" alt="ADE Logo" class="h-8 w-auto bg-white rounded p-1">
+        <span class="font-display font-extrabold text-lg tracking-tight">Sri Adhira Engineers — Owner Dashboard</span>
+      </div>
+      <div id="authStatus" class="hidden flex items-center space-x-4">
+        <span id="userEmail" class="text-xs text-white/80 font-medium"></span>
+        <button id="logoutBtn" class="bg-white/10 hover:bg-white/20 text-white text-xs font-bold py-1.5 px-3 rounded-lg transition">Sign Out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-8">
+    <!-- Login Card -->
+    <div id="loginSection" class="max-w-md mx-auto bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-12">
+      <h1 class="font-display text-2xl font-extrabold text-navy text-center">Owner Access</h1>
+      <p class="text-xs text-slate-500 text-center mt-1">Sign in to manage projects and client feedback</p>
+
+      <form id="loginForm" class="mt-6 space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Email</label>
+          <input type="email" id="loginEmail" value="sriadhiraengineers@gmail.com" required class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-blue">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Password</label>
+          <input type="password" id="loginPassword" required class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-blue">
+        </div>
+        <button type="submit" id="loginBtn" class="w-full bg-navy hover:bg-blue text-white font-bold py-3 rounded-xl transition text-sm">Sign In</button>
+        <p id="loginError" class="hidden text-xs text-red-600 font-semibold text-center mt-2"></p>
+      </form>
+    </div>
+
+    <!-- Admin Panel (Shown after sign-in) -->
+    <div id="dashboardSection" class="hidden space-y-10">
+      
+      <!-- Tab Section 1: Manage Projects Gallery -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+        <h2 class="font-display text-xl font-extrabold text-navy">Add New Project</h2>
+        <p class="text-xs text-slate-500 mt-0.5">Upload project photos or videos to showcase in the public website gallery.</p>
+
+        <form id="projectForm" class="mt-6 space-y-5">
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Project Title *</label>
+              <input type="text" id="projectTitle" required placeholder="e.g. 3BHK Luxury Villa" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-blue">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Service Category *</label>
+              <select id="projectService" required class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-blue">
+                <option>Residential Constructions</option>
+                <option>Commercial Buildings</option>
+                <option>Interior Works</option>
+                <option>Steel Structures Design and Constructions</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Status *</label>
+              <select id="projectStatus" required class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-blue">
+                <option value="Completed">Completed</option>
+                <option value="Ongoing">Ongoing</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Location</label>
+              <input type="text" id="projectLocation" placeholder="e.g. Thiruninravur, Chennai" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-blue">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Upload Photo / Video *</label>
+            <input type="file" id="projectFile" accept="image/*,video/*" required class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm outline-none bg-slate-50">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Description</label>
+            <textarea id="projectDesc" rows="2" placeholder="Short summary of project scope, area size, or highlights..." class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-blue"></textarea>
+          </div>
+
+          <button type="submit" id="uploadBtn" class="bg-navy hover:bg-blue text-white font-bold px-6 py-3 rounded-xl transition text-sm">Publish Project</button>
+          <p id="uploadStatus" class="hidden text-sm font-semibold mt-2"></p>
+        </form>
+      </div>
+
+      <!-- Published Projects List -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+        <h2 class="font-display text-xl font-extrabold text-navy">Manage Published Projects</h2>
+        <div id="adminProjectsList" class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Loaded dynamically -->
+        </div>
+      </div>
+
+      <!-- Tab Section 2: Manage Testimonials & Feedback -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+        <h2 class="font-display text-xl font-extrabold text-navy">Moderate Client Feedback</h2>
+        <p class="text-xs text-slate-500 mt-0.5">Approve client reviews before displaying them live on the homepage.</p>
+
+        <div id="adminTestimonialsList" class="mt-6 space-y-4">
+          <!-- Loaded dynamically -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/config.js"></script>
+  <script>
+    let client = null;
+    if (window.SUPABASE_URL && window.SUPABASE_ANON_KEY) {
+      client = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+    }
+
+    const loginSection = document.getElementById('loginSection');
+    const dashboardSection = document.getElementById('dashboardSection');
+    const authStatus = document.getElementById('authStatus');
+    const userEmail = document.getElementById('userEmail');
+
+    // Check existing session
+    async function initSession() {
+      if (!client) return;
+      const { data: { session } } = await client.auth.getSession();
+      if (session) {
+        showDashboard(session.user);
+      }
+    }
+
+    function showDashboard(user) {
+      loginSection.classList.add('hidden');
+      dashboardSection.classList.remove('hidden');
+      authStatus.classList.remove('hidden');
+      userEmail.textContent = user.email;
+      loadAdminProjects();
+      loadAdminTestimonials();
+    }
+
+    // Login submit
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const err = document.getElementById('loginError');
+      err.classList.add('hidden');
+      
+      const { data, error } = await client.auth.signInWithPassword({
+        email: document.getElementById('loginEmail').value,
+        password: document.getElementById('loginPassword').value
+      });
+
+      if (error) {
+        err.textContent = error.message;
+        err.classList.remove('hidden');
+      } else {
+        showDashboard(data.user);
+      }
+    });
+
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+      await client.auth.signOut();
+      window.location.reload();
+    });
+
+    // Upload New Project
+    document.getElementById('projectForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = document.getElementById('uploadStatus');
+      const btn = document.getElementById('uploadBtn');
+      btn.disabled = true;
+      btn.textContent = 'Uploading file...';
+
+      try {
+        const file = document.getElementById('projectFile').files[0];
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${Date.now()}.${fileExt}`;
+        const filePath = `projects/${fileName}`;
+
+        // Upload media file to bucket
+        const { error: uploadErr } = await client.storage
+          .from('project-media')
+          .upload(filePath, file);
+
+        if (uploadErr) throw uploadErr;
+
+        // Get public URL
+        const { data: { publicUrl } } = client.storage
+          .from('project-media')
+          .getPublicUrl(filePath);
+
+        const isVideo = file.type.startsWith('video');
+
+        // Insert database record
+        const { error: dbErr } = await client.from('projects').insert([{
+          title: document.getElementById('projectTitle').value,
+          service: document.getElementById('projectService').value,
+          status: document.getElementById('projectStatus').value,
+          location: document.getElementById('projectLocation').value,
+          description: document.getElementById('projectDesc').value,
+          media_url: publicUrl,
+          media_type: isVideo ? 'video' : 'image',
+          is_published: true
+        }]);
+
+        if (dbErr) throw dbErr;
+
+        status.className = 'text-emerald-600 text-sm font-semibold mt-2 block';
+        status.textContent = 'Project published successfully!';
+        document.getElementById('projectForm').reset();
+        loadAdminProjects();
+      } catch (err) {
+        status.className = 'text-red-600 text-sm font-semibold mt-2 block';
+        status.textContent = 'Upload failed: ' + err.message;
+      }
+
+      btn.disabled = false;
+      btn.textContent = 'Publish Project';
+    });
+
+    // Load Admin Projects
+    async function loadAdminProjects() {
+      const container = document.getElementById('adminProjectsList');
+      const { data, error } = await client.from('projects').select('*').order('created_at', { ascending: false });
+
+      if (error || !data || !data.length) {
+        container.innerHTML = '<p class="text-xs text-slate-400 col-span-full">No published projects found.</p>';
+        return;
+      }
+
+      container.innerHTML = data.map(item => `
+        <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-3 flex flex-col justify-between">
+          <div>
+            ${item.media_type === 'video' 
+              ? `<video src="${item.media_url}" class="h-32 w-full object-cover rounded-lg" controls></video>`
+              : `<img src="${item.media_url}" class="h-32 w-full object-cover rounded-lg">`}
+            <p class="font-bold text-navy text-sm mt-2">${item.title}</p>
+            <p class="text-xs text-slate-500">${item.service} • ${item.status}</p>
+          </div>
+          <button onclick="deleteProject('${item.id}')" class="mt-3 w-full bg-red-100 hover:bg-red-200 text-red-700 font-bold py-1.5 rounded-lg text-xs transition">Delete Project</button>
+        </div>
+      `).join('');
+    }
+
+    async function deleteProject(id) {
+      if (confirm('Delete this project item?')) {
+        await client.from('projects').delete().eq('id', id);
+        loadAdminProjects();
+      }
+    }
+
+    // Load Admin Testimonials
+    async function loadAdminTestimonials() {
+      const listContainer = document.getElementById('adminTestimonialsList');
+      const { data, error } = await client.from('testimonials').select('*').order('created_at', { ascending: false });
+
+      if (error || !data || !data.length) {
+        listContainer.innerHTML = '<p class="text-xs text-slate-400">No client feedback submissions found.</p>';
+        return;
+      }
+
+      listContainer.innerHTML = data.map(item => `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-4 gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-navy text-sm">${item.client_name}</span>
+              <span class="text-xs text-slate-400">(${item.role_location || 'N/A'})</span>
+              <span class="px-2 py-0.5 text-[10px] font-bold rounded ${item.is_approved ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">
+                ${item.is_approved ? 'Approved' : 'Pending Review'}
+              </span>
+            </div>
+            <p class="text-xs text-slate-600 italic mt-1">"${item.comment}"</p>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <button onclick="toggleApprove('${item.id}', ${!item.is_approved})" class="px-3 py-1.5 text-xs font-bold rounded-lg ${item.is_approved ? 'bg-slate-200 text-slate-700' : 'bg-emerald-600 text-white'}">
+              ${item.is_approved ? 'Unapprove' : 'Approve'}
+            </button>
+            <button onclick="deleteFeedback('${item.id}')" class="px-3 py-1.5 text-xs font-bold rounded-lg bg-red-100 text-red-700 hover:bg-red-200">
+              Delete
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function toggleApprove(id, approvedState) {
+      await client.from('testimonials').update({ is_approved: approvedState }).eq('id', id);
+      loadAdminTestimonials();
+    }
+
+    async function deleteFeedback(id) {
+      if (confirm('Delete this client review?')) {
+        await client.from('testimonials').delete().eq('id', id);
+        loadAdminTestimonials();
+      }
+    }
+
+    initSession();
+  </script>
+</body>
+</html>
