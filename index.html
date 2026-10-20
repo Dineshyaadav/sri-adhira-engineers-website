@@ -26,8 +26,7 @@
       boxShadow: { soft: '0 18px 55px rgba(9,45,103,.12)' }
     }}};
   </script>
-  <!-- ANALYTICS SETUP: Replace G-XXXXXXXXXX with your Google Analytics 4 Measurement ID.
-       Create a GA4 property at https://analytics.google.com/ and add your website URL. -->
+  <!-- ANALYTICS SETUP: Replace G-XXXXXXXXXX with your Google Analytics 4 Measurement ID. -->
   <!--
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
@@ -72,31 +71,56 @@
     </div>
   </div>
 
-  <!-- Header -->
+  <!-- Responsive Header -->
   <header class="sticky top-0 z-50 border-b border-slate-100 bg-white/95 backdrop-blur-md">
-    <nav class="mx-auto max-w-7xl px-5 py-3 flex items-center justify-between gap-4" aria-label="Main navigation">
-      <a href="#home" class="flex items-center gap-3 min-w-0" aria-label="Sri Adhira Engineers home">
-        <img src="assets/ade-logo.png" alt="ADE company logo" class="h-12 w-auto object-contain">
-        <span class="min-w-0">
-          <span class="block font-display text-base sm:text-lg font-extrabold leading-tight text-navy">SRI ADHIRA ENGINEERS</span>
-          <span class="block text-[10px] sm:text-xs font-semibold tracking-wide text-slate-500">WE BUILD YOUR DREAMS</span>
-        </span>
-      </a>
-      <div class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-700">
-        <a class="nav-link" href="#about">About</a>
-        <a class="nav-link" href="#services">Services</a>
-        <a class="nav-link" href="#projects">Projects</a>
-        <a class="nav-link" href="#process">Our Approach</a>
-        <a class="nav-link" href="#contact">Contact</a>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo & Company Name -->
+        <a href="#home" class="flex items-center space-x-3 shrink-0">
+          <img src="assets/ade-logo.png" alt="ADE Logo" class="h-10 sm:h-12 w-auto object-contain">
+          <div class="leading-tight">
+            <span class="block text-sm sm:text-base font-extrabold text-navy tracking-tight font-display">SRI ADHIRA ENGINEERS</span>
+            <span class="block text-[10px] sm:text-xs text-slate-500 font-semibold tracking-wide">WE BUILD YOUR DREAMS</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-8 font-semibold text-sm text-slate-700">
+          <a href="#about" class="nav-link hover:text-navy transition">About</a>
+          <a href="#services" class="nav-link hover:text-navy transition">Services</a>
+          <a href="#projects" class="nav-link hover:text-navy transition">Projects</a>
+          <a href="#process" class="nav-link hover:text-navy transition">Our Approach</a>
+          <a href="#contact" class="nav-link hover:text-navy transition">Contact</a>
+        </nav>
+
+        <!-- CTA & Mobile Toggle -->
+        <div class="flex items-center space-x-3">
+          <!-- Quote Button: Responsive styling to prevent overlay on mobile -->
+          <a href="#contact" class="hidden sm:inline-flex items-center justify-center btn-primary rounded-full px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-bold whitespace-nowrap">
+            Request a Quote <span class="ml-1" aria-hidden="true">↗</span>
+          </a>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button id="menuToggle" type="button" class="lg:hidden rounded-xl border border-slate-200 p-2 text-navy focus:outline-none" aria-label="Toggle navigation" aria-expanded="false">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
       </div>
-      <a href="#contact" class="btn-primary rounded-full px-4 sm:px-5 py-3 text-sm font-bold whitespace-nowrap">Request a Quote <span aria-hidden="true">↗</span></a>
-      <button id="menuToggle" class="lg:hidden rounded-xl border border-slate-200 p-2 text-navy" aria-label="Open navigation menu" aria-expanded="false">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-    </nav>
-    <div id="mobileMenu" class="hidden border-t border-slate-100 bg-white px-5 py-4 lg:hidden">
-      <div class="mx-auto flex max-w-7xl flex-col gap-4 text-sm font-semibold">
-        <a href="#about">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#process">Our Approach</a><a href="#contact">Contact</a>
+    </div>
+
+    <!-- Mobile Dropdown Navigation Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-100 bg-white px-5 py-4">
+      <div class="mx-auto flex max-w-7xl flex-col gap-4 text-sm font-semibold text-slate-700">
+        <a href="#about" class="hover:text-navy">About</a>
+        <a href="#services" class="hover:text-navy">Services</a>
+        <a href="#projects" class="hover:text-navy">Projects</a>
+        <a href="#process" class="hover:text-navy">Our Approach</a>
+        <a href="#contact" class="hover:text-navy">Contact</a>
+        <div class="pt-2">
+          <a href="#contact" class="block text-center w-full btn-primary rounded-full py-3 text-sm font-bold">
+            Request a Quote ↗
+          </a>
+        </div>
       </div>
     </div>
   </header>
@@ -174,7 +198,7 @@
       </div>
     </section>
 
-    <!-- Project gallery: populated from your private owner upload page after Supabase setup -->
+    <!-- Project gallery -->
     <section id="projects" class="bg-white py-20 sm:py-28">
       <div class="mx-auto max-w-7xl px-5">
         <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
@@ -236,7 +260,6 @@
 
         <div class="rounded-[28px] border border-slate-100 bg-white p-6 shadow-soft sm:p-9">
           <div class="mb-7"><p class="text-xs font-extrabold uppercase tracking-[.16em] text-blue">Enquiry form</p><h3 class="mt-2 font-display text-2xl font-extrabold text-navy">Request a project quote</h3><p class="mt-2 text-sm text-slate-500">Fields marked * are required.</p></div>
-          <!-- Free email notifications: FormSubmit.co. On first live submission, confirm the activation email they send. -->
           <form id="enquiryForm" action="https://formsubmit.co/sriadhiraengineers@gmail.com" method="POST" class="space-y-5">
             <input type="hidden" name="_subject" value="New website enquiry — Sri Adhira Engineers">
             <input type="hidden" name="_template" value="table">
@@ -278,52 +301,59 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="assets/config.js"></script>
   <script>
-    // Mobile navigation
+    // Mobile navigation toggle
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
-    menuToggle.addEventListener('click', () => {
-      const open = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', String(!open));
-      mobileMenu.classList.toggle('hidden', open);
-    });
-    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
-      menuToggle.setAttribute('aria-expanded', 'false');
-    }));
+
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', String(!isOpen));
+        mobileMenu.classList.toggle('hidden', isOpen);
+      });
+
+      mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }));
+    }
+
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Service cards preselect the relevant enquiry type.
+    // Service cards preselect the relevant enquiry type
     document.querySelectorAll('.service-link').forEach(link => link.addEventListener('click', () => {
       const project = document.getElementById('project');
       const wanted = link.dataset.service;
       [...project.options].forEach(option => { if (option.value === wanted || option.text === wanted) project.value = option.value || option.text; });
     }));
 
-    // FormSubmit sends the form to the company email. This UX handler validates locally;
-    // the browser then posts the form to FormSubmit's endpoint.
+    // FormSubmit handler
     const form = document.getElementById('enquiryForm');
     const status = document.getElementById('formStatus');
     const submitBtn = document.getElementById('submitBtn');
-    form.addEventListener('submit', (event) => {
-      if (!form.checkValidity()) {
-        event.preventDefault();
-        form.reportValidity();
-        return;
-      }
-      // Keep normal form submission enabled so the free FormSubmit service receives it.
-      submitBtn.querySelector('span').textContent = 'Sending…';
-      submitBtn.disabled = true;
-      status.className = 'rounded-xl bg-blue-50 p-4 text-sm leading-6 text-blue-900';
-      status.textContent = 'Submitting your enquiry securely. You may be redirected to a confirmation page.';
-    });
+    if (form) {
+      form.addEventListener('submit', (event) => {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          form.reportValidity();
+          return;
+        }
+        submitBtn.querySelector('span').textContent = 'Sending…';
+        submitBtn.disabled = true;
+        status.className = 'rounded-xl bg-blue-50 p-4 text-sm leading-6 text-blue-900';
+        status.textContent = 'Submitting your enquiry securely. You may be redirected to a confirmation page.';
+      });
+    }
 
-    // Public project gallery. The public key is safe only with the supplied Supabase RLS policies.
+    // Public project gallery powered by Supabase
     const gallery = document.getElementById('projectGallery');
     let projectItems = [];
     let activeProjectFilter = 'All';
     const hasSupabaseConfig = window.SUPABASE_URL && window.SUPABASE_ANON_KEY &&
       !window.SUPABASE_URL.includes('YOUR_PROJECT') && !window.SUPABASE_ANON_KEY.includes('YOUR_SUPABASE');
+      
     function renderProjects() {
+      if (!gallery) return;
       const items = activeProjectFilter === 'All' ? projectItems : projectItems.filter(item => item.status === activeProjectFilter);
       gallery.replaceChildren();
       if (!items.length) {
@@ -349,11 +379,13 @@
         article.append(mediaWrap,body); gallery.append(article);
       });
     }
+
     document.querySelectorAll('.project-filter').forEach(button => button.addEventListener('click', () => {
       activeProjectFilter = button.dataset.filter;
       document.querySelectorAll('.project-filter').forEach(b => { b.className = b === button ? 'project-filter rounded-full bg-navy px-4 py-2 text-sm font-bold text-white' : 'project-filter rounded-full border border-slate-200 px-4 py-2 text-sm font-bold text-slate-600 hover:border-blue hover:text-blue'; });
       renderProjects();
     }));
+
     if (hasSupabaseConfig && window.supabase) {
       const publicClient = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
       publicClient.from('projects').select('id,title,service,status,location,description,media_url,media_type,created_at').eq('is_published', true).order('created_at', { ascending: false }).then(({data,error}) => {
